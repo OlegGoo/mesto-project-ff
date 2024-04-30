@@ -8,15 +8,22 @@ export function openModal(item) {
 };
 
 // Закрытие модального окна
-export function closeModal() {
-  const popupIsOpened = document.querySelector('.popup_is-opened');
-    popupIsOpened.classList.remove('popup_is-opened');
-    document.removeEventListener('keydown', closeModalEsc);
-  };
+export function closeModal(item) {
+  item.classList.remove('popup_is-opened');
+  document.removeEventListener('keydown', closeModalEsc);
+};
 
 // Закрытие модального окна Ecs
 function closeModalEsc(evt) {
   if (evt.key === 'Escape') {
-    closeModal();
+    const popupIsOpened = document.querySelector('.popup_is-opened');
+    closeModal(popupIsOpened);
+  }
+};
+
+// Закрытие модального окна по оверлею
+export function closePopupByOverlay(evt) {
+  if (evt.target.classList.contains('popup')) {
+    closeModal(evt.target);
   }
 };

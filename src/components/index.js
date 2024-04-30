@@ -1,7 +1,7 @@
 import '../pages/index.css';
 import { initialCards } from './cards.js'
 import {createCard, deleteCard, likeCard} from './card.js';
-import { openModal, closeModal } from './modal.js';
+import { openModal, closeModal, closePopupByOverlay } from './modal.js';
 
 // @todo: DOM узлы
 const placesList = document.querySelector('.places__list');
@@ -12,20 +12,17 @@ initialCards.forEach(function(element) {
 });
 
 // Закрытие модальных окон
-const popupsClose = document.querySelectorAll('.popup__close');
 const popups = document.querySelectorAll('.popup');
 
-popupsClose.forEach(function(item) {
-  item.addEventListener('click', closeModal);
-});
-
 popups.forEach(function(item) {
-  item.addEventListener('click', function(evt) {
-    if (evt.target.classList.contains('popup')) {
-      closeModal();
+  item.addEventListener('click', function (evt) {
+    if (evt.target.classList.contains('popup__close')) {
+      closeModal(item);
     }
   });
 });
+
+document.addEventListener('click', closePopupByOverlay);
 
 // Редактирование профиля
 const profileEditButton = document.querySelector('.profile__edit-button');
@@ -49,7 +46,7 @@ function handleFormEditSubmit(evt) {
   evt.preventDefault();
   profileTitle.textContent = nameInput.value;
   profileDescription.textContent = jobInput.value;
-  closeModal(); 
+  closeModal(popupTypeEdit); 
 };
 
 formTypeEdit.addEventListener('submit', handleFormEditSubmit); 
@@ -75,7 +72,7 @@ function handleFormNewCardSubmit(evt) {
     link: inputCardUrl.value
   };
   placesList.prepend(createCard(newCard, deleteCard, likeCard, openImage));
-  closeModal(); 
+  closeModal(popupNewCard); 
 };
 
 formNewCard.addEventListener('submit', handleFormNewCardSubmit); 
