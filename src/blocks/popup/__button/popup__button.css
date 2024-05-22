@@ -14,7 +14,7 @@
   margin-top: 48px;
 }
 
-.popup__button:hover {
+.popup__button:not([disabled]):hover{
   background: rgba(0, 0, 0, 0.8);
   cursor: pointer;
 }
@@ -25,3 +25,12 @@
     line-height: 17px;
   }
 }
+
+.popup__button_disabled {
+  background: #F6F6F6;
+  color: rgba(0, 0, 0, 0.15);
+  outline: 1px , solid, rgba(0, 0, 0, 0.15);
+}
+
+
+
