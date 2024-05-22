@@ -135,3 +135,4 @@ export const editAvatar = (avatar) => {
     console.log(err);
   });
 };
+
