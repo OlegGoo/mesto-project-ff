@@ -23,9 +23,6 @@ export const getInitialCards = () => {
   .then(res => {
     return response(res);
   })
-  .catch((err) => {
-    console.log(err);
-  })
 };
 
 // Добавление новой карточки
@@ -41,9 +38,6 @@ export const addNewCard = (cardData) => {
   .then(res => {
     return response(res);
   })
-  .catch((err) => {
-    console.log(err);
-  });
 };
 
 // Удаление карточки
@@ -55,9 +49,6 @@ export const deleteMyCard = (cardId) => {
   .then(res => {
     return response(res);
   })
-  .catch((err) => {
-    console.log(err);
-  }); 
 };
 
 //Постановка и снятие лайка
@@ -69,9 +60,6 @@ export const addLikeCard = (cardId) => {
   .then(res => {
     return response(res);
   })
-  .catch((err) => {
-    console.log(err);
-  }); 
 };
 
 export const deleteLikeCard = (cardId) => {
@@ -82,9 +70,6 @@ export const deleteLikeCard = (cardId) => {
   .then(res => {
     return response(res);
   })
-  .catch((err) => {
-    console.log(err);
-  }); 
 };
 
 // Запрос на получение данных профиля
@@ -96,9 +81,6 @@ export const getProfileData = () => {
   .then(res => {
     return response(res);
   })
-  .catch((err) => {
-    console.log(err);
-  });
 };
 
 // Сохранение данных профиля на сервере
@@ -114,9 +96,9 @@ export const editProfile = (nameInput, jobInput) => {
   .then(res => {
     return response(res);
   })
-  .catch((err) => {
-    console.log(err);
-  });
+  .then(data => {
+    return data;
+  })
 };
 
 // Обновление аватара пользователя
@@ -131,8 +113,8 @@ export const editAvatar = (avatar) => {
   .then(res => {
     return response(res);
   })
-  .catch((err) => {
-    console.log(err);
-  });
+  .then(data => {
+    return data.avatar;
+  })
 };
 

@@ -25,10 +25,10 @@ export function createCard(card, deleteCard, likeCard, openImage, profileId){
         })
         .catch((err) => {
           console.log(err);
-        });
+        })
     })
   } else {
-    cardDeleteButton.style.display = 'none';
+    cardDeleteButton.remove();
   }
 
   // Проверка своего лайка
@@ -42,16 +42,16 @@ export function createCard(card, deleteCard, likeCard, openImage, profileId){
   // Счетчик лайков начинается с 1
   if (card.likes.length > 0) {
     cardLikeСounter.textContent = card.likes.length;
-    } else {
+  } else {
     cardLikeСounter.textContent = '';
-    }
+  }
 
   // Слушатель кнопки лайка
   cardLikeButton.addEventListener('click', function() {
     likeCard(cardId, cardLikeButton, cardLikeСounter);
   });
 
-  //Слушатель нажатия на картинку 
+  // Слушатель нажатия на картинку 
   cardImage.addEventListener('click', function() {
     openImage(card);
   });

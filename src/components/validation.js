@@ -1,13 +1,3 @@
-// Объект с настройками валидации
-export const validationConfig = {
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__button',
-  inactiveButtonClass: 'popup__button_disabled',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__error_visible'
-};
-
 // Показывает ошибку
 function showInputError(formElement, inputElement, errorMessage, validationConfig) {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
@@ -73,10 +63,6 @@ function toggleButtonState(inputList, buttonElement, validationConfig) {
 export function enableValidation(validationConfig) {
   const formList = Array.from(document.querySelectorAll(validationConfig.formSelector))
   formList.forEach(function(formElement) {
-    formElement.addEventListener('submit', function(evt) {
-      evt.preventDefault();
-    });
-
     setEventListeners(formElement, validationConfig);
   })
 };

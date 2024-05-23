@@ -1,9 +1,6 @@
 // Открытие модального окна
 export function openModal(item) {
-  item.classList.add('popup_is-animated');
-  setTimeout(function(){
-    item.classList.add('popup_is-opened');
-  }, 50);
+  item.classList.add('popup_is-opened');
   document.addEventListener('keydown', closeModalEsc);
 };
 
